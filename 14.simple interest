@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+double calculateSimpleInterest(double principal, double time, bool isSeniorCitizen) {
+    double rateOfInterest;
+
+    if (isSeniorCitizen) {
+        rateOfInterest = 12.0; 
+    } else {
+        rateOfInterest = 10.0; 
+    }
+
+    double simpleInterest = (principal * rateOfInterest * time) / 100.0;
+    return simpleInterest;
+}
+
+int main() {
+    double principalAmount;
+    double timePeriod;
+    char seniorCitizenInput;
+    bool isSeniorCitizen;
+
+    // Input values
+    cout << "Enter the principal amount: ";
+    cin >> principalAmount;
+    cout << "Enter the time period in years: ";
+    cin >> timePeriod;
+    cout << "Is the customer a senior citizen (y/n)? ";
+    cin >> seniorCitizenInput;
+
+    // Determine if the customer is a senior citizen
+    if (seniorCitizenInput == 'y' || seniorCitizenInput == 'Y') {
+        isSeniorCitizen = true;
+    } else {
+        isSeniorCitizen = false;
+    }
+
+    // Calculate interest
+    double interest = calculateSimpleInterest(principalAmount, timePeriod, isSeniorCitizen);
+    cout << "Simple Interest: " << interest << endl;
+
+    return 0;
+}
