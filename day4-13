@@ -1,0 +1,46 @@
+#include <iostream>
+#include <cmath> // for pow function
+using namespace std;
+
+// Base class Number
+class Number {
+protected:
+    int num;
+
+public:
+    void setNumber(int n) {
+        num = n;
+    }
+};
+
+// Derived class Square inheriting from Number
+class Square : public Number {
+public:
+    int getSquare() {
+        return num * num;
+    }
+};
+
+// Derived class Cube inheriting from Number
+class Cube : public Number {
+public:
+    int getCube() {
+        return num * num * num;
+    }
+};
+
+int main() {
+    int number;
+    cout << "Enter a number: ";
+    cin >> number;
+
+    Square sq;
+    sq.setNumber(number);
+    cout << "Square of " << number << " is: " << sq.getSquare() << endl;
+
+    Cube cb;
+    cb.setNumber(number);
+    cout << "Cube of " << number << " is: " << cb.getCube() << endl;
+
+    return 0;
+}
