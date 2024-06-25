@@ -1,0 +1,63 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Base class Student
+class Student {
+protected:
+    string name;
+    int rollNumber;
+    float marks;
+
+public:
+    // Constructor to initialize student details
+    Student(string n, int roll, float m) : name(n), rollNumber(roll), marks(m) {}
+
+    // Method to display student details
+    void displayDetails() {
+        cout << "Name: " << name << endl;
+        cout << "Roll Number: " << rollNumber << endl;
+        cout << "Marks: " << marks << endl;
+    }
+};
+
+// Derived class ReportCard inheriting from Student
+class ReportCard : public Student {
+private:
+    string grade;
+
+public:
+    // Constructor to initialize student details and calculate grade
+    ReportCard(string n, int roll, float m) : Student(n, roll, m) {
+        // Assign grade based on marks
+        if (marks >= 90) {
+            grade = "A+";
+        } else if (marks >= 80) {
+            grade = "A";
+        } else if (marks >= 70) {
+            grade = "B";
+        } else if (marks >= 60) {
+            grade = "C";
+        } else if (marks >= 50) {
+            grade = "D";
+        } else {
+            grade = "F";
+        }
+    }
+
+    // Method to display student report
+    void displayReport() {
+        displayDetails(); // Call base class method to display student details
+        cout << "Grade: " << grade << endl;
+    }
+};
+
+int main() {
+    // Create an instance of ReportCard
+    ReportCard student("Alice", 101, 85.5);
+
+    // Display student report
+    student.displayReport();
+
+    return 0;
+}
